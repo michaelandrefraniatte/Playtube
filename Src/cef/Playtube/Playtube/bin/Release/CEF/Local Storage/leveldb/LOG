@@ -1,0 +1,6 @@
+2022/08/18-21:12:02.895 184c Reusing MANIFEST C:\Users\mic\Documents\Perso\PT\Src\cef\Playtube\Playtube\bin\Release\CEF\Local Storage\leveldb/MANIFEST-000001
+2022/08/18-21:12:02.898 184c Recovering log #4
+2022/08/18-21:12:02.961 184c Reusing old log C:\Users\mic\Documents\Perso\PT\Src\cef\Playtube\Playtube\bin\Release\CEF\Local Storage\leveldb/000004.log 
+2022/08/18-21:33:08.264 bd8 Level-0 table #7: started
+2022/08/18-21:33:08.362 bd8 Level-0 table #7: 14938 bytes OK
+2022/08/18-21:33:08.393 bd8 Delete type=0 #4

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playtube", "Playtube\Playtube.csproj", "{CA85E6B2-518C-46BC-A591-D18B9794A35E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA85E6B2-518C-46BC-A591-D18B9794A35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA85E6B2-518C-46BC-A591-D18B9794A35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA85E6B2-518C-46BC-A591-D18B9794A35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA85E6B2-518C-46BC-A591-D18B9794A35E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E983B10-4B74-43E4-9D04-6E6DADF954C1}
+	EndGlobalSection
+EndGlobal
