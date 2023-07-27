@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2aSwQHEGYh6S+PsIbFOdhQFhlruTM4j3Udb8qJPO+OzxQAbIuSied7em5L9nV3RAwXrtb4zS9Ilp0nmUsl6u8A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\micha\\Documents\\Perso\\tool\\Playtube\\Src\\Playtube\\Playtube\\Playtube.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.web.webview2\\1.0.1518.46\\microsoft.web.webview2.1.0.1518.46.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.18362.2005\\microsoft.windows.sdk.contracts.10.0.18362.2005.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\system.runtime.windowsruntime.ui.xaml\\4.6.0\\system.runtime.windowsruntime.ui.xaml.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

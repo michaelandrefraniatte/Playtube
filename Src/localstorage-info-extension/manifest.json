@@ -1,0 +1,26 @@
+{
+  "name": "localstorage-info",
+  "version": "0.0.0.1",
+  "manifest_version": 2,
+  "description": "An extension to get space left for your webbrowser.",
+  "icons": {
+    "16": "icons/li16x16.png",
+    "32": "icons/li32x32.png",
+    "64": "icons/li64x64.png",
+    "128": "icons/li128x128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [ "lib/jquery.min.js", "content-scripts/content.js" ]
+    }
+  ],
+  "web_accessible_resources": [
+    "icons/li128x128.png"
+  ]
+}

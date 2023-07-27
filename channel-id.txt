@@ -1,0 +1,15 @@
+
+https://www.youtube.com/watch?v=zXoDr2I1GoY&list=playlists-id
+https://www.youtube.com/watch?v=zXoDr2I1GoY&list=PLidWdB8YW-tKJ6o-dUCPs2-yA6-s3v3Vh
+
+https://www.youtube.com/channel/channel-id/videos
+https://www.youtube.com/channel/UCicfD-BPShEb0-NqSXs3qZA/videos
+
+user
+https://www.googleapis.com/youtube/v3/channels?key={KEY HERE}&forUsername={USERNAME}&part=id,snippet&order=date
+https://www.googleapis.com/youtube/v3/channels?key=AIzaSyAbr5dI-jmED0wI2m3Mg6ja7OVmhbNZyJM&forUsername=Dashup&part=id,snippet&order=date
+
+channel
+https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&q={channel}&type=channel&key={YOUR_API_KEY}
+https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&q=Dashup&type=channel&key=AIzaSyAbr5dI-jmED0wI2m3Mg6ja7OVmhbNZyJM
+
