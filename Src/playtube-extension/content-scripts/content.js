@@ -799,6 +799,16 @@ async function checkSize(img) {
     }
 }
 
+async function getSize(videoid) {
+    var imgblob = await fetchBlob("https://img.youtube.com/vi/" + videoid + "/mqdefault.jpg");
+    if (parseInt(parseInt(imgblob.size)) == 1097 | parseInt(parseInt(imgblob.size)) == 8853) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 async function fetchBlob(url) {
     const response = await fetch(url);
     return response.blob();
@@ -956,9 +966,12 @@ function videoplus() {
                             var files = await responsef.json();
                             for (let file of files.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var title = file.snippet.title;
-                                array.push(videoid);
-                                objdetails[videoid] = title;
+                                var isprivate = await getSize(videoid);
+                                if (!isprivate) {
+                                    var title = (file.snippet.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
+                                    array.push(videoid);
+                                    objdetails[videoid] = title;
+                                }
                             }
                             try {
                                 nextpagetoken = files.nextPageToken;
@@ -977,9 +990,12 @@ function videoplus() {
                                 var nfiles = await responsenf.json();
                                 for (let file of nfiles.items) {
                                     var videoid = file.snippet.resourceId.videoId;
-                                    var title = file.snippet.title;
-                                    array.push(videoid);
-                                    objdetails[videoid] = title;
+                                    var isprivate = await getSize(videoid);
+                                    if (!isprivate) {
+                                        var title = (file.snippet.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
+                                        array.push(videoid);
+                                        objdetails[videoid] = title;
+                                    }
                                 }
                                 try {
                                     nextpagetoken = nfiles.nextPageToken;
@@ -1027,9 +1043,12 @@ function videoplus() {
                             var files = await responsef.json();
                             for (let file of files.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var title = file.snippet.title;
-                                array.push(videoid);
-                                objdetails[videoid] = title;
+                                var isprivate = await getSize(videoid);
+                                if (!isprivate) {
+                                    var title = (file.snippet.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
+                                    array.push(videoid);
+                                    objdetails[videoid] = title;
+                                }
                             }
                             try {
                                 nextpagetoken = files.nextPageToken;
@@ -1048,9 +1067,12 @@ function videoplus() {
                                 var nfiles = await responsenf.json();
                                 for (let file of nfiles.items) {
                                     var videoid = file.snippet.resourceId.videoId;
-                                    var title = file.snippet.title;
-                                    array.push(videoid);
-                                    objdetails[videoid] = title;
+                                    var isprivate = await getSize(videoid);
+                                    if (!isprivate) {
+                                        var title = (file.snippet.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
+                                        array.push(videoid);
+                                        objdetails[videoid] = title;
+                                    }
                                 }
                                 try {
                                     nextpagetoken = nfiles.nextPageToken;
@@ -1096,7 +1118,7 @@ function videoplus() {
                                 dataType: "json",
                                 success: function(data) {
                                     if (data.error != "404 Not Found") {
-                                        videotitle = data.title;
+                                        videotitle = (data.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
                                     }
                                 }
                             });

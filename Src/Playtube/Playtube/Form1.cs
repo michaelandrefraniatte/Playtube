@@ -1031,6 +1031,16 @@ async function checkSize(img) {
     }
 }
 
+async function getSize(videoid) {
+    var imgblob = await fetchBlob('https://img.youtube.com/vi/' + videoid + '/mqdefault.jpg');
+    if (parseInt(parseInt(imgblob.size)) == 1097 | parseInt(parseInt(imgblob.size)) == 8853) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 async function fetchBlob(url) {
     const response = await fetch(url);
     return response.blob();
@@ -1178,9 +1188,12 @@ async function videoplus() {
                         var files = await responsef.json();
                         for (let file of files.items) {
                             var videoid = file.snippet.resourceId.videoId;
-                            var title = window.btoa(unescape(encodeURIComponent(file.snippet.title)));
-                            array.push(videoid);
-                            objdetails[videoid] = title;
+                            var isprivate = await getSize(videoid);
+                            if (!isprivate) {
+                                var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                                array.push(videoid);
+                                objdetails[videoid] = title;
+                            }
                         }
                         try {
                             nextpagetoken = files.nextPageToken;
@@ -1199,9 +1212,12 @@ async function videoplus() {
                             var nfiles = await responsenf.json();
                             for (let file of nfiles.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var title = window.btoa(unescape(encodeURIComponent(file.snippet.title)));
-                                array.push(videoid);
-                                objdetails[videoid] = title;
+                                var isprivate = await getSize(videoid);
+                                if (!isprivate) {
+                                    var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                                    array.push(videoid);
+                                    objdetails[videoid] = title;
+                                }
                             }
                             try {
                                 nextpagetoken = nfiles.nextPageToken;
@@ -1219,13 +1235,15 @@ async function videoplus() {
                         playlists.forEach(function(val, index) {
                             var inarray = array.includes(val.videoid);
                             if ((val.playlist == window.btoa(unescape(encodeURIComponent(folder))) & !inarray) | val.playlist != window.btoa(unescape(encodeURIComponent(folder)))) {
-                                if (val.videotitle != 'Private video' & val.videotitle != 'Deleted video')
+                                if (val.videotitle != window.btoa(unescape(encodeURIComponent('Private video'))) & val.videotitle != window.btoa(unescape(encodeURIComponent('Deleted video')))) {
                                     newplaylists.push({videoid: val.videoid, videotitle: val.videotitle, playlist: val.playlist});
+                                }
                             }
                         });
                         for (let id of array) {
-                            if (objdetails[id] != 'Private video' & objdetails[id] != 'Deleted video')
+                            if (objdetails[id] != window.btoa(unescape(encodeURIComponent('Private video'))) & objdetails[id] != window.btoa(unescape(encodeURIComponent('Deleted video')))) {
                                 newplaylists.push({videoid: id, videotitle: objdetails[id], playlist: window.btoa(unescape(encodeURIComponent(folder)))});
+                            }
                         }
                         var tempgrouper = newplaylists;
                         var grouped = transformArr(tempgrouper);
@@ -1249,9 +1267,12 @@ async function videoplus() {
                         var files = await responsef.json();
                         for (let file of files.items) {
                             var videoid = file.snippet.resourceId.videoId;
-                            var title = window.btoa(unescape(encodeURIComponent(file.snippet.title)));
-                            array.push(videoid);
-                            objdetails[videoid] = title;
+                            var isprivate = await getSize(videoid);
+                            if (!isprivate) {
+                                var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                                array.push(videoid);
+                                objdetails[videoid] = title;
+                            }
                         }
                         try {
                             nextpagetoken = files.nextPageToken;
@@ -1270,9 +1291,12 @@ async function videoplus() {
                             var nfiles = await responsenf.json();
                             for (let file of nfiles.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var title = window.btoa(unescape(encodeURIComponent(file.snippet.title)));
-                                array.push(videoid);
-                                objdetails[videoid] = title;
+                                var isprivate = await getSize(videoid);
+                                if (!isprivate) {
+                                    var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                                    array.push(videoid);
+                                    objdetails[videoid] = title;
+                                }
                             }
                             try {
                                 nextpagetoken = nfiles.nextPageToken;
@@ -1290,13 +1314,15 @@ async function videoplus() {
                         playlists.forEach(function(val, index) {
                             var inarray = array.includes(val.videoid);
                             if ((val.playlist == window.btoa(unescape(encodeURIComponent(folder))) & !inarray) | val.playlist != window.btoa(unescape(encodeURIComponent(folder)))) {
-                                if (val.videotitle != 'Private video' & val.videotitle != 'Deleted video')
+                                if (val.videotitle != window.btoa(unescape(encodeURIComponent('Private video'))) & val.videotitle != window.btoa(unescape(encodeURIComponent('Deleted video')))) {
                                     newplaylists.push({videoid: val.videoid, videotitle: val.videotitle, playlist: val.playlist});
+                                }
                             }
                         });
                         for (let id of array) {
-                            if (objdetails[id] != 'Private video' & objdetails[id] != 'Deleted video')
+                            if (objdetails[id] != window.btoa(unescape(encodeURIComponent('Private video'))) & objdetails[id] != window.btoa(unescape(encodeURIComponent('Deleted video')))) {
                                 newplaylists.push({videoid: id, videotitle: objdetails[id], playlist: window.btoa(unescape(encodeURIComponent(folder)))});
+                            }
                         }
                         var tempgrouper = newplaylists;
                         var grouped = transformArr(tempgrouper);
@@ -1318,7 +1344,7 @@ async function videoplus() {
                             dataType: 'json',
                             success: function(data) {
                                 if (data.error != '404 Not Found') {
-                                    videotitle = window.btoa(unescape(encodeURIComponent(data.title)));
+                                    videotitle = window.btoa(unescape(encodeURIComponent((data.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
                                 }
                             }
                         });
