@@ -1058,11 +1058,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micha\\Documents\\Perso\\tool\\Playtube\\Src\\Playtube\\Playtube\\Playtube.csproj",
+      "projectUniqueName": "C:\\Users\\micha\\Documents\\tool\\Playtube\\Src\\Playtube\\Playtube\\Playtube.csproj",
       "projectName": "Playtube",
-      "projectPath": "C:\\Users\\micha\\Documents\\Perso\\tool\\Playtube\\Src\\Playtube\\Playtube\\Playtube.csproj",
+      "projectPath": "C:\\Users\\micha\\Documents\\tool\\Playtube\\Src\\Playtube\\Playtube\\Playtube.csproj",
       "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\micha\\Documents\\Perso\\tool\\Playtube\\Src\\Playtube\\Playtube\\obj\\",
+      "outputPath": "C:\\Users\\micha\\Documents\\tool\\Playtube\\Src\\Playtube\\Playtube\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
