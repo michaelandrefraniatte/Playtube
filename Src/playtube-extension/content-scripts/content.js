@@ -757,6 +757,9 @@ function clickMenu() {
 function createSlide() {
     var folder = $("#navbar .folder:visible").text();
     var files = obj[folder];
+    files = files.filter(function (value, index, array) { 
+        return array.indexOf(value) === index;
+    });
     playerid = [];
     playertitle = [];
     for (let file of files) {
@@ -1108,9 +1111,11 @@ function videoplus() {
                         }
                         if (isnotplaylistid) {
                             var videoid = item;
-                            var videotitle = "";
-                            var videothumbnail = "";
-                            $.ajax({
+                            var isprivate = await getSize(videoid);
+                            if (!isprivate) {
+                            	var videotitle = "";
+                            	var videothumbnail = "";
+                            	$.ajax({
                                 type: "GET",
                                 async: false,
                                 cache: false,
@@ -1121,15 +1126,16 @@ function videoplus() {
                                         videotitle = (data.title).replaceAll(/[&]/g, "and").replaceAll(/[|]/g, "-").replaceAll(/[\]/g, "").replaceAll(/["]/g, "").replaceAll(/[@]/g, "").replaceAll(/[#]/g, "");
                                     }
                                 }
-                            });
-                            playlists = JSON.parse(localStorage.getItem("playlists")) || [];
-                            playlists = transformObj(playlists);
-                            if (videotitle != "Private video" & videotitle != "Deleted video")
-                                playlists.push({videoid: item, videotitle: videotitle, playlist: folder});
-                            var tempgrouper = playlists;
-                            var grouped = transformArr(tempgrouper);
-                            grouped = transformInpand(grouped);
-                            localStorage.setItem("playlists", JSON.stringify(grouped));
+                            	});
+                            	playlists = JSON.parse(localStorage.getItem("playlists")) || [];
+                            	playlists = transformObj(playlists);
+                            	if (videotitle != "Private video" & videotitle != "Deleted video")
+                            	    playlists.push({videoid: item, videotitle: videotitle, playlist: folder});
+                            	var tempgrouper = playlists;
+                            	var grouped = transformArr(tempgrouper);
+                            	grouped = transformInpand(grouped);
+                            	localStorage.setItem("playlists", JSON.stringify(grouped));
+				    }
                         }
                     }
                 }
