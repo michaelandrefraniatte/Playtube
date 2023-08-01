@@ -991,6 +991,9 @@ function clickMenu() {
 function createSlide() {
     var folder = $('#navbar .folder:visible').text();
     var files = objdata[folder];
+    files = files.filter(function (value, index, array) { 
+        return array.indexOf(value) === index;
+    });
     playerid = [];
     playertitle = [];
     for (let file of files) {
