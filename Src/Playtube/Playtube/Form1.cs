@@ -1335,28 +1335,31 @@ async function videoplus() {
                     }
                     if (isnotplaylistid) {
                         var videoid = item;
-                        var videotitle = '';
-                        var videothumbnail = '';
-                        $.ajax({
-                            type: 'GET',
-                            async: false,
-                            cache: false,
-                            url: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + videoid,
-                            dataType: 'json',
-                            success: function(data) {
-                                if (data.error != '404 Not Found') {
-                                    videotitle = window.btoa(unescape(encodeURIComponent((data.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                        var isprivate = await getSize(videoid);
+                        if (!isprivate) {
+                            var videotitle = '';
+                            var videothumbnail = '';
+                            $.ajax({
+                                type: 'GET',
+                                async: false,
+                                cache: false,
+                                url: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + videoid,
+                                dataType: 'json',
+                                success: function(data) {
+                                    if (data.error != '404 Not Found') {
+                                        videotitle = window.btoa(unescape(encodeURIComponent((data.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
+                                    }
                                 }
-                            }
-                        });
-                        playlists = JSON.parse(JSON.stringify(savedstorage)) || [];
-                        playlists = transformObj(playlists);
-                        if (videotitle != 'Private video' & videotitle != 'Deleted video')
-                            playlists.push({videoid: item, videotitle: videotitle, playlist: window.btoa(unescape(encodeURIComponent(folder)))});
-                        var tempgrouper = playlists;
-                        var grouped = transformArr(tempgrouper);
-                        grouped = transformInpand(grouped);
-                        await bridge.SaveStorage(JSON.stringify(grouped));
+                            });
+                            playlists = JSON.parse(JSON.stringify(savedstorage)) || [];
+                            playlists = transformObj(playlists);
+                            if (videotitle != 'Private video' & videotitle != 'Deleted video')
+                                playlists.push({videoid: item, videotitle: videotitle, playlist: window.btoa(unescape(encodeURIComponent(folder)))});
+                            var tempgrouper = playlists;
+                            var grouped = transformArr(tempgrouper);
+                            grouped = transformInpand(grouped);
+                            await bridge.SaveStorage(JSON.stringify(grouped));
+                        }
                     }
                 }
             })();
