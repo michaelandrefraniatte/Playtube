@@ -753,8 +753,8 @@ function showSlides(n) {
     goingtovideo = false;
     clickonmenu = false;
     starting = false;
-    setPlayer(slideIndex - 1);
-    setVideoSource(playerid[slideIndex - 1]);
+    setPlayer(parseInt(slideIndex - 1));
+    setVideoSource(playerid[parseInt(slideIndex - 1)]);
     setVideoPlayOverlay();
 }
 
@@ -858,7 +858,7 @@ function enlightPlaylist(playlist) {
 
 function onPlayerReady(event) {  
     event.target.setPlaybackQuality('small'); 
-    if (checkVideoInOverlay()) {
+    if (checkVideoInOverlay() & !goingtovideo & !goingtochannel) {
         if (event.target.getDuration() <= 0) {
             slideIndex += 1;
             showSlides(slideIndex);
@@ -871,7 +871,7 @@ function onPlayerReady(event) {
             videoPlayer[str].playVideo();
          }
     }
-    else {
+    else if (!goingtovideo & !goingtochannel) {
         clickMenu();
     }
 } 
@@ -880,7 +880,7 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
         event.target.destroy();
     };
-    if (checkVideoInOverlay()) {
+    if (checkVideoInOverlay() & !goingtovideo & !goingtochannel) {
         if (event.data == YT.PlayerState.ENDED) {
             if (allrand) {
                 var folders = (Object.keys(objdata).map(key => key));
@@ -931,7 +931,7 @@ function onPlayerStateChange(event) {
             videoPlayer[str].playVideo();
         }
     }
-    else {
+    else if (!goingtovideo & !goingtochannel){
         clickMenu();
     }
 }
@@ -982,9 +982,11 @@ function createMenu() {
 function clickMenu() {
     clickonmenu = true;
     createSlide();
-    slideIndex = 1;
-    showSlides(1);
- }
+    if (!goingtovideo) {
+        slideIndex = 1;
+        showSlides(1);
+    }
+}
 
 function createSlide() {
     var folder = $('#navbar .folder:visible').text();
@@ -1026,14 +1028,14 @@ async function createOverlay() {
 
 async function checkSize(img) {
     var imgblob = await fetchBlob(img.src);
-    if (parseInt(parseInt(imgblob.size)) == 1097 | parseInt(parseInt(imgblob.size)) == 8853) {
+    if (parseInt(imgblob.size) == 1097 | parseInt(imgblob.size) == 8853) {
         img.parentElement.remove();
     }
 }
 
 async function getSize(videoid) {
     var imgblob = await fetchBlob('https://img.youtube.com/vi/' + videoid + '/mqdefault.jpg');
-    if (parseInt(parseInt(imgblob.size)) == 1097 | parseInt(parseInt(imgblob.size)) == 8853) {
+    if (parseInt(imgblob.size) == 1097 | parseInt(imgblob.size) == 8853) {
         return true;
     }
     else {
@@ -1055,16 +1057,15 @@ function checkVideoInOverlay() {
 function goToVideo(el) {
     goingtovideo = true;
     clickMenu();
-    goingtovideo = true;
     var fileindex = Number(el.dataset.fileindex);
-    slideIndex += fileindex;
+    slideIndex = parseInt(fileindex) + 1;
     showSlides(slideIndex);
 }
 
 function goToChannel(el) {
     goingtochannel = true;
     var folderindex = Number(el.dataset.folder);
-    menuIndex = folderindex + 1;
+    menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
     scrollToThumbnail(videoidtemp);
 }
