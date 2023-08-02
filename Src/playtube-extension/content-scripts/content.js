@@ -611,7 +611,7 @@ function scrollToThumbnail(videoid) {
     var id = folder + "-" + file + "-Overlay";
     var element = document.getElementById(id).parentNode;
     if (element != null & element != "")
-        setTimeout(() => { element.scrollIntoView({ block: "center" }); }, 1000);
+        setTimeout(() => { element.scrollIntoView({ block: "center" }); }, 3000);
 }
 
 function enlightPlaylist(playlist) {
@@ -746,12 +746,14 @@ function createMenu() {
     $("#list").html(htmlString);
     showMenu(1);
 }
- 
+
 function clickMenu() {
     clickonmenu = true;
     createSlide();
-    slideIndex = 1;
-    showSlides(1);
+    if (!goingtovideo) {
+        slideIndex = 1;
+        showSlides(1);
+    }
  }
 
 function createSlide() {
@@ -826,16 +828,15 @@ function checkVideoInOverlay() {
 function goToVideo(el) {
     goingtovideo = true;
     clickMenu();
-    goingtovideo = true;
     var fileindex = Number(el.dataset.fileindex);
-    slideIndex += fileindex;
+    slideIndex = parseInt(fileindex) + 1;
     showSlides(slideIndex);
 }
 
 function goToChannel(el) {
     goingtochannel = true;
     var folderindex = Number(el.dataset.folder);
-    menuIndex = folderindex + 1;
+    menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
     scrollToThumbnail(videoidtemp);
 }

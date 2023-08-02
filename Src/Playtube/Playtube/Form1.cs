@@ -843,7 +843,7 @@ function scrollToThumbnail(videoid) {
     var id = folder + '-' + file + '-Overlay';
     var element = document.getElementById(id).parentNode;
     if (element != null & element != '')
-        setTimeout(() => { element.scrollIntoView({ block: 'center' }); }, 1000);
+        setTimeout(() => { element.scrollIntoView({ block: 'center' }); }, 3000);
 }
 
 function enlightPlaylist(playlist) {
