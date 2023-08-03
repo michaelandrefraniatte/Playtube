@@ -659,7 +659,7 @@ function plusSlides(n) {
     if (n == -1 | (n == 1 & arrayIndex < arraySlideIndex.length - 1)) {
         showSlides(n);
     }
-    else if (checkVideoInOverlay()) {
+    else if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
         if (looping) {
             showSlides(slideIndex);
         }
@@ -858,7 +858,7 @@ function enlightPlaylist(playlist) {
 
 function onPlayerReady(event) {  
     event.target.setPlaybackQuality('small'); 
-    if (checkVideoInOverlay() & !goingtovideo & !goingtochannel) {
+    if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
         if (event.target.getDuration() <= 0) {
             slideIndex += 1;
             showSlides(slideIndex);
@@ -880,7 +880,7 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
         event.target.destroy();
     };
-    if (checkVideoInOverlay() & !goingtovideo & !goingtochannel) {
+    if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
         if (event.data == YT.PlayerState.ENDED) {
             if (allrand) {
                 var folders = (Object.keys(objdata).map(key => key));
@@ -944,7 +944,7 @@ function onPlayerError(event) {
         plusSlides(1);
     }
     else {
-        if (checkVideoInOverlay()) {
+        if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
             slideIndex += 1;
             showSlides(slideIndex);
             var classname = $('.video:visible').attr('class'); 
@@ -987,6 +987,14 @@ function clickMenu() {
         showSlides(1);
     }
     clickonmenu = false;
+}
+
+function checkVideo() {
+    var video = $('.video:visible');
+    if (video.length > 0)
+        return true;
+    else
+        return false;
 }
 
 function createSlide() {
