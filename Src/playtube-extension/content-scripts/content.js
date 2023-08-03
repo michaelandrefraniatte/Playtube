@@ -754,6 +754,7 @@ function clickMenu() {
         slideIndex = 1;
         showSlides(1);
     }
+    clickonmenu = false;
  }
 
 function createSlide() {
@@ -831,6 +832,7 @@ function goToVideo(el) {
     var fileindex = Number(el.dataset.fileindex);
     slideIndex = parseInt(fileindex) + 1;
     showSlides(slideIndex);
+    goingtovideo = false;
 }
 
 function goToChannel(el) {
@@ -838,6 +840,7 @@ function goToChannel(el) {
     var folderindex = Number(el.dataset.folder);
     menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
+    goingtochannel = false;
     scrollToThumbnail(videoidtemp);
 }
 
