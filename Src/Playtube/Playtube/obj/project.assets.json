@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
-      "Microsoft.Web.WebView2/1.0.1518.46": {
+      "Microsoft.Web.WebView2/1.0.1901.177": {
         "type": "package",
         "compile": {
           "lib/net45/Microsoft.Web.WebView2.Core.dll": {
@@ -171,7 +171,7 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
-      "Microsoft.Web.WebView2/1.0.1518.46": {
+      "Microsoft.Web.WebView2/1.0.1901.177": {
         "type": "package",
         "compile": {
           "lib/net45/Microsoft.Web.WebView2.Core.dll": {
@@ -326,7 +326,7 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x64": {
-      "Microsoft.Web.WebView2/1.0.1518.46": {
+      "Microsoft.Web.WebView2/1.0.1901.177": {
         "type": "package",
         "compile": {
           "lib/net45/Microsoft.Web.WebView2.Core.dll": {
@@ -484,7 +484,7 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
-      "Microsoft.Web.WebView2/1.0.1518.46": {
+      "Microsoft.Web.WebView2/1.0.1901.177": {
         "type": "package",
         "compile": {
           "lib/net45/Microsoft.Web.WebView2.Core.dll": {
@@ -643,10 +643,10 @@
     }
   },
   "libraries": {
-    "Microsoft.Web.WebView2/1.0.1518.46": {
-      "sha512": "1yQc90jUrLBmwtxPR8YIvJkBi/ZFLchkTUuw5TIjuNwKHVqAZv9AWGHSWrJigTLRuC0c/ivc6WbUY52/BbaIqQ==",
+    "Microsoft.Web.WebView2/1.0.1901.177": {
+      "sha512": "uvVpS0zoIBlmGzNBqtDNhJLvc4z5raFLFmXsLaAVKkxpRMiehOxUtjwvsZX/1Pv6M/N6xkIt/PnM0NdTHlOQoQ==",
       "type": "package",
-      "path": "microsoft.web.webview2/1.0.1518.46",
+      "path": "microsoft.web.webview2/1.0.1901.177",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -687,7 +687,7 @@
         "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.xml",
         "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll",
         "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.xml",
-        "microsoft.web.webview2.1.0.1518.46.nupkg.sha512",
+        "microsoft.web.webview2.1.0.1901.177.nupkg.sha512",
         "microsoft.web.webview2.nuspec",
         "runtimes/win-arm64/native/WebView2Loader.dll",
         "runtimes/win-arm64/native_uap/Microsoft.Web.WebView2.Core.dll",
@@ -1047,7 +1047,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
-      "Microsoft.Web.WebView2 >= 1.0.1518.46",
+      "Microsoft.Web.WebView2 >= 1.0.1901.177",
       "Microsoft.Windows.SDK.Contracts >= 10.0.18362.2005"
     ]
   },
@@ -1091,7 +1091,7 @@
         "dependencies": {
           "Microsoft.Web.WebView2": {
             "target": "Package",
-            "version": "[1.0.1518.46, )"
+            "version": "[1.0.1901.177, )"
           },
           "Microsoft.Windows.SDK.Contracts": {
             "target": "Package",

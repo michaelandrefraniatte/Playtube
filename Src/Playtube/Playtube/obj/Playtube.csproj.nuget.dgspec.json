@@ -40,7 +40,7 @@
           "dependencies": {
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.1518.46, )"
+              "version": "[1.0.1901.177, )"
             },
             "Microsoft.Windows.SDK.Contracts": {
               "target": "Package",
