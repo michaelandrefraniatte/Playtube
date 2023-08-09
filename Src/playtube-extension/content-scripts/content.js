@@ -521,7 +521,7 @@ function showSlides(n) {
 
 function plusMenu(n) {
     showMenu(menuIndex += n);
-    scrollToThumbnail(videoidtemp);
+    setTimeout(() => { scrollToThumbnail(videoidtemp); }, 3000);
 }
 
 function showMenu(n) {
@@ -600,7 +600,7 @@ function createPlayer(classid, x, y, videoid, playlist, title) {
         titletemp = title;
         playlisttemp = playlist;
         videoidtemp = videoid;
-        scrollToThumbnail(videoid);
+        setTimeout(() => { scrollToThumbnail(videoid); }, 3000);
         enlightPlaylist(playlist);
     });
 }
@@ -611,7 +611,7 @@ function scrollToThumbnail(videoid) {
     var id = folder + "-" + file + "-Overlay";
     var element = document.getElementById(id).parentNode;
     if (element != null & element != "")
-        setTimeout(() => { element.scrollIntoView({ block: "center" }); }, 3000);
+        element.scrollIntoView({ block: "center" });
 }
 
 function enlightPlaylist(playlist) {
@@ -849,7 +849,7 @@ function goToChannel(el) {
     menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
     goingtochannel = false;
-    scrollToThumbnail(videoidtemp);
+    setTimeout(() => { scrollToThumbnail(videoidtemp); }, 3000);
 }
 
 document.onmousemove = function(event) {
