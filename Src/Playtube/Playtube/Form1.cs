@@ -1649,7 +1649,7 @@ function responseFunc() { }
             if (echoboostenable)
             {
                 var proc = Process.GetProcessesByName("EchoBoost");
-                if (proc.Length > 0)
+                if (proc.Length > 0 & Process.GetProcessesByName("Playtov").Length == 0 & Process.GetProcessesByName("Playzer").Length == 0 & Process.GetProcessesByName("Playcipe").Length == 0)
                     proc[0].Kill();
             }
         }
