@@ -28,6 +28,16 @@ namespace Playtube
         {
             InitializeComponent();
         }
+        [DllImport("user32.dll")]
+        internal static extern bool SendMessage(IntPtr hWnd, Int32 msg, Int32 wParam, Int32 lParam);
+        static Int32 WM_SYSCOMMAND = 0x0112;
+        static Int32 SC_RESTORE = 0xF120;
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         [DllImport("USER32.DLL")]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
         [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
@@ -77,6 +87,7 @@ namespace Playtube
         public float[] fftBuffer;
         public BasicSpectrumProvider spectrumProvider;
         public IWaveSource finalSource;
+        private static bool closeonicon = false;
         public string backgroundcolor = "";
         public string overlaycolor = "";
         public string previousnextbuttonshovercolor = "";
@@ -121,6 +132,7 @@ namespace Playtube
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            TrayMenuContext();
             keyboardHook.Hook += new KeyboardHook.KeyboardHookCallback(KeyboardHook_Hook);
             keyboardHook.Install();
             x = this.Location.X;
@@ -149,7 +161,11 @@ namespace Playtube
             }
             if (echoboostenable)
                 Process.Start("EchoBoost.exe");
-            GetAudioByteArray();
+            Task.Run(() => GetAudioByteArray());
+            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
+            {
+                createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
+            }
         }
         private bool fullScreen = false;
         [DefaultValue(false)]
@@ -1641,6 +1657,12 @@ function responseFunc() { }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!closeonicon)
+            {
+                e.Cancel = true;
+                MinimzedTray();
+                return;
+            }
             closed = true;
             capture.Stop();
             webView21.Dispose();
@@ -1707,6 +1729,35 @@ function responseFunc() { }
                     }
                 }
             }
+        }
+        private void TrayMenuContext()
+        {
+            this.notifyIcon1.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
+            this.notifyIcon1.ContextMenuStrip.Items.Add("Quit", null, this.MenuTest1_Click);
+        }
+        void MenuTest1_Click(object sender, EventArgs e)
+        {
+            closeonicon = true;
+            this.Close();
+        }
+        private void MinimzedTray()
+        {
+            ShowWindow(Process.GetCurrentProcess().MainWindowHandle, 0);
+        }
+        private void MaxmizedFromTray()
+        {
+            if (File.Exists(Application.StartupPath + @"\temphandle"))
+                using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\temphandle"))
+                {
+                    IntPtr handle = new IntPtr(int.Parse(file.ReadLine()));
+                    ShowWindow(handle, 9);
+                    SetForegroundWindow(handle);
+                    Microsoft.VisualBasic.Interaction.AppActivate("Playtube");
+                }
+        }
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            Task.Run(() => MaxmizedFromTray());
         }
         public const int VK_LBUTTON = (int)0x01;
         public const int VK_RBUTTON = (int)0x02;
