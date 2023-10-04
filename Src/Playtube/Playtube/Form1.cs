@@ -893,11 +893,9 @@ function onPlayerReady(event) {
 } 
 
 function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.ENDED) {
+    if (event.data != YT.PlayerState.PAUSED & event.data == YT.PlayerState.ENDED) {
         event.target.destroy();
-    };
-    if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
-        if (event.data == YT.PlayerState.ENDED) {
+        if (checkVideoInOverlay() & checkVideo() & !goingtovideo & !goingtochannel) {
             if (allrand) {
                 var folders = (Object.keys(objdata).map(key => key));
                 var rndnext = folders.length;
@@ -938,17 +936,15 @@ function onPlayerStateChange(event) {
             else {
                 showSlides(slideIndex);
             }
-        }
-        if (event.data != YT.PlayerState.PAUSED) {
             var classname = $('.video:visible').attr('class'); 
             var folder =  classname.replace('video ', '');
             var id = $('.video:visible').attr('id'); 
             var str = id.replace(folder + '-', '');
             videoPlayer[str].playVideo();
         }
-    }
-    else if (!goingtovideo & !goingtochannel){
-        clickMenu();
+        else if (!goingtovideo & !goingtochannel){
+            clickMenu();
+        }
     }
 }
 
