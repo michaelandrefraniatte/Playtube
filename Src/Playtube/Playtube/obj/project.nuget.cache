@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L0h+rkSeQBm6wwU2Y3osSjRtGV24OaUXOMIGzePMzzIFFeKyKJJ2eAnjsjPaQkzY3bhbDuUqbsGLuWtO/DgL8w==",
+  "dgSpecHash": "q39e7eFXN+KBrCOFg5jUucDCp83HOZu+YelN6jDnns/V+wDeqtesV3DJGiZkQQl7lRcVJDr12OEMy2FviQt60A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\micha\\Documents\\tool\\Playtube\\Playtube\\Playtube\\Playtube.csproj",
+  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\PlaytubeOfficial\\Src\\Playtube\\Playtube\\Playtube.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.web.webview2\\1.0.2045.28\\microsoft.web.webview2.1.0.2045.28.nupkg.sha512"
   ],

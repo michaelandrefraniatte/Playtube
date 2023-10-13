@@ -153,6 +153,7 @@ namespace Playtube
             webView21.NavigationStarting += WebView21_NavigationStarting;
             webView21.NavigationCompleted += WebView21_NavigationCompleted;
             webView21.Dock = DockStyle.Fill;
+            webView21.DefaultBackgroundColor = Color.Transparent;
             this.Controls.Add(webView21);
             using (StreamReader file = new StreamReader("params.txt"))
             {
