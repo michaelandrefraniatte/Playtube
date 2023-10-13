@@ -827,10 +827,12 @@ function getAllFilesFromFolders() {
 }
 
 function createPlayer(classid, x, y, videoid, playlist, title) {
+    var widthsize = 66 + '%';
+    var heightsize = 9 / 16 * 66 * window.innerWidth / window.innerHeight + '%';
     window.YT.ready(function() {
         videoPlayer[videoid] = new YT.Player(classid, {
-            width: '70%',
-            height: '70%',
+            width: widthsize,
+            height: heightsize,
             videoId: videoid,
             playerVars: {
               autoplay: 1,
