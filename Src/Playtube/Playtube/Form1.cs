@@ -142,6 +142,7 @@ namespace Playtube
             cy = this.Size.Height;
             this.label1.Location = new Point(cx / 2 - this.label1.Size.Width / 2, cy / 2 - this.label1.Height / 2 - this.label2.Height);
             this.label2.Location = new Point(cx / 2 - this.label2.Size.Width / 2, cy / 2 - this.label2.Height / 2 + this.label2.Height);
+            this.pictureBox1.Location = new Point(cx / 2 - this.pictureBox1.Size.Width / 2, cy * 1 / 4);
             this.progressBar1.Location = new Point(cx / 2 - this.progressBar1.Size.Width / 2, cy * 2 / 3);
             Task.Run(() => Loader());
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security", "--autoplay-policy=no-user-gesture-required");
@@ -328,6 +329,7 @@ namespace Playtube
                 this.Controls.Remove(label1);
                 this.Controls.Remove(label2);
                 this.Controls.Remove(label3);
+                this.Controls.Remove(pictureBox1);
                 starting = false;
             }
             if (File.Exists(tempsavepath))
