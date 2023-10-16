@@ -889,6 +889,14 @@ function createPlayer(classid, x, y, videoid, playlist, title) {
     });
 }
 
+window.addEventListener('resize', sizeChange);
+
+function sizeChange() {
+    var widthsize = 66 + '%';
+    var heightsize = 9 / 16 * 66 * window.innerWidth / window.innerHeight + '%';
+    videoPlayer[videoidtemp].setSize(width=widthsize, height=heightsize);
+}
+
 function scrollToThumbnail(videoid) {
     var folder = $('#navbar .folder:visible').text();
     var file = videoid;
