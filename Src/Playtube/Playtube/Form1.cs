@@ -307,7 +307,7 @@ namespace Playtube
                             barHeight = HEIGHT;
                             x = 0;
                             for (var i = 1; i < 100; i += 1) {
-                                barHeight = audiorawdata[i];
+                                barHeight = audiorawdata[i] * window.innerHeight / barHeightInit;
                                 ctx.fillStyle = 'frequencystickscolor';
                                 ctx.strokeStyle = 'frequencystickscolor';
                                 ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
@@ -663,6 +663,7 @@ var playertitle = [];
 var titletemp = '';
 var playlisttemp = '';
 var videoidtemp = '';
+var barHeightInit = window.innerHeight;
 
 function changeTitle() {
     document.title = 'Playtube';
