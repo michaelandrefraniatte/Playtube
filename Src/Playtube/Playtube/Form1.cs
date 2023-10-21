@@ -307,7 +307,7 @@ namespace Playtube
                             barHeight = HEIGHT;
                             x = 0;
                             for (var i = 1; i < 100; i += 1) {
-                                barHeight = audiorawdata[i] * window.innerHeight / barHeightInit;
+                                barHeight = audiorawdata[i] * barHeightCoef;
                                 ctx.fillStyle = 'frequencystickscolor';
                                 ctx.strokeStyle = 'frequencystickscolor';
                                 ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
@@ -664,6 +664,7 @@ var titletemp = '';
 var playlisttemp = '';
 var videoidtemp = '';
 var barHeightInit = window.innerHeight;
+var barHeightCoef = 1;
 
 function changeTitle() {
     document.title = 'Playtube';
@@ -905,6 +906,7 @@ function sizeChange() {
     var widthsize = 66 + '%';
     var heightsize = 9 / 16 * 66 * window.innerWidth / window.innerHeight + '%';
     videoPlayer[videoidtemp].setSize(width=widthsize, height=heightsize);
+    barHeightCoef = window.innerHeight / barHeightInit;
 }
 
 function scrollToThumbnail(videoid) {
