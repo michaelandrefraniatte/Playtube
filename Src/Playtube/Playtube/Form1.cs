@@ -1267,11 +1267,11 @@ async function videoplus() {
                         var nextpagetoken = '';
                         var nomorevideo = false;
                         var param = 'playlistId=' + channelplaylistid;
-                        var responsef = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&videoEmbeddable=true&maxResults=50&' + param + '&key=' + apikey);
+                        var responsef = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&videoEmbeddable=true&maxResults=50&' + param + '&key=' + apikey);
                         var files = await responsef.json();
                         for (let file of files.items) {
                             var videoid = file.snippet.resourceId.videoId;
-                            var isprivate = await getSize(videoid);
+                            var isprivate = file.status.privacyStatus == 'private';
                             if (!isprivate) {
                                 var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
                                 array.push(videoid);
@@ -1291,11 +1291,11 @@ async function videoplus() {
                             nomorevideo = true;
                         }
                         while (!nomorevideo) {
-                            var responsenf = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&videoEmbeddable=true&maxResults=50&pageToken=' + nextpagetoken + '&' + param + '&key=' + apikey);
+                            var responsenf = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&videoEmbeddable=true&maxResults=50&pageToken=' + nextpagetoken + '&' + param + '&key=' + apikey);
                             var nfiles = await responsenf.json();
                             for (let file of nfiles.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var isprivate = await getSize(videoid);
+                                var isprivate = file.status.privacyStatus == 'private';
                                 if (!isprivate) {
                                     var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
                                     array.push(videoid);
@@ -1346,11 +1346,11 @@ async function videoplus() {
                         var nextpagetoken = '';
                         var nomorevideo = false;
                         var param = 'playlistId=' + channelplaylistid;
-                        var responsef = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&' + param + '&key=' + apikey);
+                        var responsef = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=50&' + param + '&key=' + apikey);
                         var files = await responsef.json();
                         for (let file of files.items) {
                             var videoid = file.snippet.resourceId.videoId;
-                            var isprivate = await getSize(videoid);
+                            var isprivate = file.status.privacyStatus == 'private';
                             if (!isprivate) {
                                 var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
                                 array.push(videoid);
@@ -1370,11 +1370,11 @@ async function videoplus() {
                             nomorevideo = true;
                         }
                         while (!nomorevideo) {
-                            var responsenf = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&pageToken=' + nextpagetoken + '&' + param + '&key=' + apikey);
+                            var responsenf = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=50&pageToken=' + nextpagetoken + '&' + param + '&key=' + apikey);
                             var nfiles = await responsenf.json();
                             for (let file of nfiles.items) {
                                 var videoid = file.snippet.resourceId.videoId;
-                                var isprivate = await getSize(videoid);
+                                var isprivate = file.status.privacyStatus == 'private';
                                 if (!isprivate) {
                                     var title = window.btoa(unescape(encodeURIComponent((file.snippet.title).replaceAll(/[&]/g, 'and').replaceAll(/[|]/g, '-').replaceAll(/[\]/g, '').replaceAll(/[']/g, '').replaceAll(/[@]/g, '').replaceAll(/[#]/g, ''))));
                                     array.push(videoid);
