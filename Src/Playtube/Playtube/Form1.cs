@@ -821,7 +821,6 @@ function showSlides(n) {
 
 function plusMenu(n) {
     showMenu(menuIndex += n);
-    setTimeout(() => { scrollToThumbnail(videoidtemp); }, 3000);
 }
 
 function showMenu(n) {
@@ -895,7 +894,6 @@ function createPlayer(classid, x, y, videoid, playlist, title) {
         titletemp = title;
         playlisttemp = playlist;
         videoidtemp = videoid;
-        setTimeout(() => { scrollToThumbnail(videoid); }, 3000);
         enlightPlaylist(playlist);
     });
 }
@@ -946,6 +944,7 @@ function onPlayerReady(event) {
     else if (!goingtovideo & !goingtochannel) {
         clickMenu();
     }
+    scrollToThumbnail(videoidtemp);
 } 
 
 function onPlayerStateChange(event) {
@@ -1149,7 +1148,6 @@ function goToChannel(el) {
     menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
     goingtochannel = false;
-    setTimeout(() => { scrollToThumbnail(videoidtemp); }, 3000);
 }
 
 document.onmousemove = function(event) {
