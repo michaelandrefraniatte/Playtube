@@ -1110,6 +1110,7 @@ async function checkSize(img) {
     var imgblob = await fetchBlob(img.src);
     if (parseInt(imgblob.size) == 1097 | parseInt(imgblob.size) == 8853) {
         img.parentElement.remove();
+        scrollToThumbnail(videoidtemp);
     }
 }
 
