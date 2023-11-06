@@ -1103,6 +1103,7 @@ async function createOverlay() {
             document.getElementById('overlay').scrollTop = '0px';
         }
     }
+    scrollToThumbnail(videoidtemp);
 }
 
 async function checkSize(img) {
