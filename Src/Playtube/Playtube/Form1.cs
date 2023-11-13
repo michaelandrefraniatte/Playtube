@@ -905,6 +905,7 @@ function sizeChange() {
     var heightsize = 9 / 16 * 66 * window.innerWidth / window.innerHeight + '%';
     videoPlayer[videoidtemp].setSize(width=widthsize, height=heightsize);
     barHeightCoef = window.innerHeight / barHeightInit;
+    scrollToThumbnail(videoidtemp);
 }
 
 function scrollToThumbnail(videoid) {
