@@ -1005,9 +1005,11 @@ function onPlayerStateChange(event) {
 }
 
 function onPlayerError(event) {
-    arrayMenuIndex = arrayMenuIndex.slice(0, -1);
-    arraySlideIndex = arraySlideIndex.slice(0, -1);
     arrayIndex -= 1;
+    arrayMenuIndex.pop();
+    arraySlideIndex.pop();
+    menuIndex = arrayMenuIndex[arrayIndex];
+    slideIndex = arraySlideIndex[arrayIndex];
     if (arrayIndex < arraySlideIndex.length - 1) {
         plusSlides(1);
     }
