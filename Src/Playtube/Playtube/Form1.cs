@@ -351,36 +351,38 @@ namespace Playtube
                 this.Controls.Remove(label3);
                 this.Controls.Remove(pictureBox1);
             }
-            if (File.Exists(tempsavepath))
+            if (File.Exists(Application.StartupPath + @"\Playtube.exe.WebView2\EBWebView\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/LOG.old"))
             {
-                using (StreamReader file = new StreamReader(tempsavepath))
+                if (File.Exists(tempsavepath))
                 {
-                    savedstorage = file.ReadLine().Replace(@"""", "'");
+                    using (StreamReader file = new StreamReader(tempsavepath))
+                    {
+                        savedstorage = file.ReadLine().Replace(@"""", "'");
+                    }
                 }
-            }
-            else
-            {
-                using (StreamWriter createdfile = new StreamWriter(tempsavepath))
+                else
                 {
-                    createdfile.WriteLine("[]");
+                    using (StreamWriter createdfile = new StreamWriter(tempsavepath))
+                    {
+                        createdfile.WriteLine("[]");
+                    }
                 }
-            }
-            using (StreamReader file = new StreamReader("colors.txt"))
-            {
-                file.ReadLine();
-                backgroundcolor = file.ReadLine();
-                file.ReadLine();
-                overlaycolor = file.ReadLine();
-                file.ReadLine();
-                previousnextbuttonshovercolor = file.ReadLine();
-                file.ReadLine();
-                frequencystickscolor = file.ReadLine();
-                file.Close();
-            }
-            string stringinject;
-            stringinject = @"document.getElementsByTagName('html')[0].innerHTML = '<head></head><body></body>';";
-            await execScriptHelper(stringinject);
-            stringinject = @"
+                using (StreamReader file = new StreamReader("colors.txt"))
+                {
+                    file.ReadLine();
+                    backgroundcolor = file.ReadLine();
+                    file.ReadLine();
+                    overlaycolor = file.ReadLine();
+                    file.ReadLine();
+                    previousnextbuttonshovercolor = file.ReadLine();
+                    file.ReadLine();
+                    frequencystickscolor = file.ReadLine();
+                    file.Close();
+                }
+                string stringinject;
+                stringinject = @"document.getElementsByTagName('html')[0].innerHTML = '<head></head><body></body>';";
+                await execScriptHelper(stringinject);
+                stringinject = @"
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css'>
@@ -610,10 +612,10 @@ namespace Playtube
 
     </style>
 ".Replace("\r\n", " ").Replace("backgroundcolor", backgroundcolor).Replace("overlaycolor", overlaycolor).Replace("previousnextbuttonshovercolor", previousnextbuttonshovercolor);
-            stringinject = @"""" + stringinject + @"""";
-            stringinject = @"document.getElementsByTagName('head')[0].innerHTML = " + stringinject + @";";
-            await execScriptHelper(stringinject);
-            string stringcontent = @"
+                stringinject = @"""" + stringinject + @"""";
+                stringinject = @"document.getElementsByTagName('head')[0].innerHTML = " + stringinject + @";";
+                await execScriptHelper(stringinject);
+                string stringcontent = @"
 
     <canvas id='canvas'></canvas>
 
@@ -1664,8 +1666,8 @@ function responseFunc() { }
 
 </script>
 ".Replace("\r\n", " ").Replace("savedstorage", savedstorage).Replace("backgroundcolor", backgroundcolor);
-            stringcontent = @"""" + stringcontent + @"""";
-            stringinject = @"(function () {
+                stringcontent = @"""" + stringcontent + @"""";
+                stringinject = @"(function () {
     function getScript(url, success) {
         var script = document.createElement('script');
         script.src = url;
@@ -1695,7 +1697,8 @@ function responseFunc() { }
         }
     });
 })();".Replace("stringcontent", stringcontent);
-            await execScriptHelper(stringinject);
+                await execScriptHelper(stringinject);
+            }
         }
         private void WebView21_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
