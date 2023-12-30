@@ -152,7 +152,6 @@ C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\bin\Re
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\bin\Release\Microsoft.Web.WebView2.Wpf.dll
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\bin\Release\Newtonsoft.Json.xml
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.SuggestedBindingRedirects.cache
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.Form1.resources
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.Properties.Resources.resources
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.GenerateResource.cache

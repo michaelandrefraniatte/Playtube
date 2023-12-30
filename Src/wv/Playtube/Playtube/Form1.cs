@@ -773,6 +773,7 @@ function showSlides(n) {
             showMenu(menuIndex);
             createOverlay();
             createSlide();
+            saveNavigation();
         }
         else if (!looping) {
             if ((allrand & !clickonmenu) | starting) {
@@ -788,11 +789,13 @@ function showSlides(n) {
                 var rnd = Math.floor(Math.random() * rndnext) + 1;
                 slideIndex = rnd;
                 createSlide();
+                saveNavigation();
             }
             else if (rand | (allrand & clickonmenu)) {
                 var rndnext = files.length;
                 var rnd = Math.floor(Math.random() * rndnext) + 1;
                 slideIndex = rnd;
+                saveNavigation();
             }
             else {
                 if (n > files.length) {
@@ -802,15 +805,7 @@ function showSlides(n) {
                     slideIndex = files.length;
                 }
             }
-            arrayMenuIndex.push(menuIndex);
-            arraySlideIndex.push(slideIndex);
-            arrayIndex = arrayMenuIndex.length;
         }
-    }
-    else {
-        arrayMenuIndex.push(menuIndex);
-        arraySlideIndex.push(slideIndex);
-        arrayIndex = arrayMenuIndex.length;
     }
     goingtochannel = false;
     goingtovideo = false;
@@ -966,9 +961,6 @@ function onPlayerStateChange(event) {
                 var rndnext = files.length;
                 var rnd = Math.floor(Math.random() * rndnext) + 1;
                 slideIndex = rnd;
-                arrayMenuIndex.push(menuIndex);
-                arraySlideIndex.push(slideIndex);
-                arrayIndex = arrayMenuIndex.length;
                 createSlide();
                 setPlayer(slideIndex - 1);
                 setVideoSource(playerid[slideIndex - 1]);
@@ -980,9 +972,6 @@ function onPlayerStateChange(event) {
                 var rndnext = files.length;
                 var rnd = Math.floor(Math.random() * rndnext) + 1;
                 slideIndex = rnd;
-                arrayMenuIndex.push(menuIndex);
-                arraySlideIndex.push(slideIndex);
-                arrayIndex = arrayMenuIndex.length;
                 setPlayer(slideIndex - 1);
                 setVideoSource(playerid[slideIndex - 1]);
                 setVideoPlayOverlay();
@@ -1007,11 +996,6 @@ function onPlayerStateChange(event) {
 }
 
 function onPlayerError(event) {
-    arrayIndex -= 1;
-    arrayMenuIndex.pop();
-    arraySlideIndex.pop();
-    menuIndex = arrayMenuIndex[arrayIndex];
-    slideIndex = arraySlideIndex[arrayIndex];
     if (arrayIndex < arraySlideIndex.length - 1) {
         plusSlides(1);
     }
@@ -1146,6 +1130,7 @@ function goToVideo(el) {
     var fileindex = Number(el.dataset.fileindex);
     slideIndex = parseInt(fileindex) + 1;
     showSlides(slideIndex);
+    saveNavigation();
     goingtovideo = false;
 }
 
@@ -1155,6 +1140,12 @@ function goToChannel(el) {
     menuIndex = parseInt(folderindex) + 1;
     showMenu(menuIndex);
     goingtochannel = false;
+}
+
+function saveNavigation() {
+    arrayMenuIndex.push(menuIndex);
+    arraySlideIndex.push(slideIndex);
+    arrayIndex = arrayMenuIndex.length;
 }
 
 document.onmousemove = function(event) {
