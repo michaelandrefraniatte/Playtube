@@ -1,8 +1,8 @@
 // background color
-#222222
+rgb(30, 30, 30)
 // overlay color
-rgba(0, 0, 0, 0.9)
+rgb(0, 0, 0)
 // previous next buttons hover color
-rgba(0, 0, 0, 0.8)
+rgb(0, 0, 0)
 // frequency sticks
 rgb(220, 220, 220)
