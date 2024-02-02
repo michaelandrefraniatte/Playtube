@@ -201,7 +201,7 @@ namespace Playtube
         {
             OnKeyDown(e.KeyData);
         }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) // David
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             OnKeyDown(keyData);
             return true;
@@ -214,7 +214,7 @@ namespace Playtube
         {
             if (keyData == Keys.F1)
             {
-                const string message = "• Author: Michaël André Franiatte.\n\r\n\r• Copyrights: All rights reserved, no permissions granted.\n\r\n\r• Contact: michael.franiatte@gmail.com.";
+                const string message = "• Author: Michaël André Franiatte.\n\r\n\r• Contact: michael.franiatte@gmail.com.\n\r\n\r• Publisher: https://github.com/michaelandrefraniatte.\n\r\n\r• Copyrights: All rights reserved, no permissions granted.\n\r\n\r• License: Not open source.";
                 const string caption = "About";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
