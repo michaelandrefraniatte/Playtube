@@ -156,6 +156,6 @@ C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Re
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.Properties.Resources.resources
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.CopyComplete
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.exe
 C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.pdb
+C:\Users\micha\Documents\github\PlaytubeOfficial\Src\wv\Playtube\Playtube\obj\Release\Playtube.csproj.Up2Date
