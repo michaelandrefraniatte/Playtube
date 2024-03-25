@@ -19,7 +19,6 @@ using System.Linq;
 using WinformsVisualization.Visualization;
 using CSCore.Streams;
 using System.Text;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace Playtube
 {
