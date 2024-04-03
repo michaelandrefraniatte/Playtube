@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eqY88bXOb7+qdKvXNaaNqCJDOmGN2WFDmBneMwfkmtvzmrRMH/NK0nBDf2PdlgrtxLdVT2WiaMHEFjh1M3yw+Q==",
+  "dgSpecHash": "fwn2zZFJpCSCBin/7jaJoDXLAph3eUcdMhGtnwL04N+m0JyZf4nwwRwrn56pLlr39yRlIjFjFrWKhgRkdAqXFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\micha\\Documents\\github\\Playtube\\Src\\wv\\Playtube\\Playtube\\Playtube.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\micha\\.nuget\\packages\\microsoft.web.webview2\\1.0.2365.46\\microsoft.web.webview2.1.0.2365.46.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.web.webview2\\1.0.2420.47\\microsoft.web.webview2.1.0.2420.47.nupkg.sha512",
     "C:\\Users\\micha\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []

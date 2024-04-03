@@ -494,8 +494,8 @@ namespace Playtube
         text-align: center;
         justify-content: stretch;
         width: 100%;
-        height: 240px;
-        max-height: 240px;
+        height: 245px;
+        max-height: 245px;
         transition: top 0.3s;
         top: 100%;
         left: 0;
@@ -1173,13 +1173,13 @@ document.onmousemove = function(event) {
 function mouseOnTop(y) {
     if (wd == 1) {
         document.getElementById('navbar').style.top = '0px';
-        document.getElementById('overlay').style.top = (sizescreeny - 240) + 'px';
+        document.getElementById('overlay').style.top = (sizescreeny - 245) + 'px';
     }
     if (wu == 1 & !collapse) {
         document.getElementById('navbar').style.top = '-50px';
         document.getElementById('overlay').style.top = '100%';
     }
-    if (y < 50 | y > sizescreeny - 240)
+    if (y < 50 | y > sizescreeny - 245)
     {
 	    if (wd <= 1) {
 		    wd = wd + 1;
@@ -1198,7 +1198,7 @@ function mouseOnTop(y) {
 function listCollaspse() {
     if (!collapse) {
         collapse = true;
-        document.getElementById('list').style.height = (sizescreeny - 240 - 50) + 'px';
+        document.getElementById('list').style.height = (sizescreeny - 245 - 50) + 'px';
         document.getElementById('list').style.display = 'block';
     }
     else {
