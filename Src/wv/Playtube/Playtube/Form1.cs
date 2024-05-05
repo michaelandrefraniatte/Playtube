@@ -232,6 +232,7 @@ namespace Playtube
         }
         public void GetAudioByteArray()
         {
+            System.Threading.Thread.Sleep(2000);
             capture = new WasapiLoopbackCapture();
             capture.Initialize();
             IWaveSource source = new SoundInSource(capture);
