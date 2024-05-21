@@ -1696,13 +1696,13 @@ function responseFunc() { }
         };
         head.appendChild(script);
     }
-    getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', function () {
+    getScript('https://appassets/jquery.min.js', function () {
         if (typeof jQuery == 'undefined') {
             console.log('Sorry, but jQuery wasn\'t able to load');
         } else {
             console.log('This page is now jQuerified with v' + $.fn.jquery);
             $(document).ready(function () { });
-                var script = document.createElement('script'); script.src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'; document.head.appendChild(script);
+                var script = document.createElement('script'); script.src = 'https://appassets/bootstrap.min.js'; document.head.appendChild(script);
                 $(document).ready(function(){$('body').html(stringcontent);
             });
         }
