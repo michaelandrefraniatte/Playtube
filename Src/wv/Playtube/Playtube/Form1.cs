@@ -1819,9 +1819,8 @@ function responseFunc() { }
                 using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\temphandle"))
                 {
                     IntPtr handle = new IntPtr(int.Parse(file.ReadLine()));
-                    ShowWindow(handle, 9);
+                    ShowWindow(handle, 1);
                     SetForegroundWindow(handle);
-                    Microsoft.VisualBasic.Interaction.AppActivate("Playtube");
                 }
         }
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
