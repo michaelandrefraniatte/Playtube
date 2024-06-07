@@ -1173,7 +1173,7 @@ document.onmousemove = function(event) {
 };
 
 function mouseOnTop(y) {
-    if ((y < 50 | y > sizescreeny - 245))
+    if (y < 50 | y > sizescreeny - 245)
     {
 	    if (wd <= 1) {
 		    wd = wd + 1;
