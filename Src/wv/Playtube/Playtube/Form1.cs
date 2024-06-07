@@ -687,6 +687,7 @@ var playlisttemp = '';
 var videoidtemp = '';
 var barHeightInit = window.innerHeight;
 var barHeightCoef = 1;
+var onplayerhover = false;
 
 function changeTitle() {
     document.title = 'Playtube';
@@ -1173,15 +1174,7 @@ document.onmousemove = function(event) {
 };
 
 function mouseOnTop(y) {
-    if (wd == 1) {
-        document.getElementById('navbar').style.top = '0px';
-        document.getElementById('overlay').style.top = (sizescreeny - 245) + 'px';
-    }
-    if (wu == 1 & !collapse) {
-        document.getElementById('navbar').style.top = '-50px';
-        document.getElementById('overlay').style.top = '100%';
-    }
-    if (y < 50 | y > sizescreeny - 245)
+    if ((y < 50 | y > sizescreeny - 245) & !onplayerhover)
     {
 	    if (wd <= 1) {
 		    wd = wd + 1;
@@ -1195,7 +1188,24 @@ function mouseOnTop(y) {
 	    }
 	    wd = 0;
     }
+    if (wd == 1) {
+        document.getElementById('navbar').style.top = '0px';
+        document.getElementById('overlay').style.top = (sizescreeny - 245) + 'px';
+    }
+    if (wu == 1 & !collapse) {
+        document.getElementById('navbar').style.top = '-50px';
+        document.getElementById('overlay').style.top = '100%';
+    }
 }
+
+$('.html5-video-player').on('mouseover',function(){
+    onplayerhover = true;
+    mouseOnTop(50);
+});
+
+$('.html5-video-player').on('mouseout',function(){
+    onplayerhover = false;
+});
 
 function listCollaspse() {
     if (!collapse) {
