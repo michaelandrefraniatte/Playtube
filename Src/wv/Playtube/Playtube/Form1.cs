@@ -539,6 +539,7 @@ namespace Playtube
 
     img {
         border: 0;
+        z-index: 1;
     }
 
     .goto, .gotochannel, .collaspse, .folderminus, .folderplus, .foldersave, .folderopen, .fileminus, .fileplus, .addapikey, .random, .loop, .allrandom {
