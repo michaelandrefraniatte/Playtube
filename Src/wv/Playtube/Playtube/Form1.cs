@@ -668,8 +668,6 @@ var sizescreenx = window.innerWidth;
 var sizescreeny = window.innerHeight;
 var videos = {};
 var done = false;
-var wd = 2;
-var wu = 2;
 var checkfolder = '';
 var collapse = false;
 var thumbnails = {};
@@ -1178,23 +1176,11 @@ document.onmousemove = function(event) {
 function mouseOnTop(y) {
     if (y < 50 | y > sizescreeny - 245)
     {
-	    if (wd <= 1) {
-		    wd = wd + 1;
-	    }
-	    wu = 0;
-    }
-    else
-    {
-	    if (wu <= 1) {
-		    wu = wu + 1;
-	    }
-	    wd = 0;
-    }
-    if (wd == 1) {
         document.getElementById('navbar').style.top = '0px';
         document.getElementById('overlay').style.top = (sizescreeny - 245) + 'px';
     }
-    if (wu == 1 & !collapse) {
+    else if (!collapse)
+    {
         document.getElementById('navbar').style.top = '-50px';
         document.getElementById('overlay').style.top = '100%';
     }
