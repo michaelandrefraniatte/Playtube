@@ -414,6 +414,7 @@ namespace Playtube
         font-family: sans-serif;
         text-decoration: none;
         font-size: 14px;
+        z-index: 0;
     }
 
     a, a:hover, a:focus, a:active {
@@ -487,6 +488,14 @@ namespace Playtube
         text-decoration: none;
     }
 
+    iframe {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+
     #overlay {
         background: overlaycolor;
         position: fixed;
@@ -504,17 +513,7 @@ namespace Playtube
         color: #FFFFFF;
         font-family: sans-serif;
         text-decoration: none;
-    }
-
-    #overlay iframe {
-        pointer-events: none;
-    }
-
-    iframe {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        z-index: 1;
     }
 
     #overlay figure {
@@ -522,17 +521,20 @@ namespace Playtube
         width: 240px;
         margin: 15px;
         display: inline-block;
+        z-index: 1;
     }
 
     .overlaytitle {
         height: 60px;
         width: 240px;
         color: #FFFFFF;
+        z-index: 1;
     }
 
     .overlayimage {
         height: 150px;
         width: 240px;
+        z-index: 1;
     }
 
     img {
