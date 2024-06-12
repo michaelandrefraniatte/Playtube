@@ -1192,7 +1192,7 @@ function mouseOnTop(y) {
     }
 }
 
-$('#overlay').on('mouseout',function(){
+$('iframe').on('mouseover',function(){
     mouseOnTop(50);
 });
 
