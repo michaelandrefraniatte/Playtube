@@ -414,6 +414,9 @@ namespace Playtube
         font-family: sans-serif;
         text-decoration: none;
         font-size: 14px;
+    }
+
+    * {
         z-index: 0;
     }
 
@@ -493,7 +496,10 @@ namespace Playtube
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 0;
+    }
+
+    #overlay *, #overlay * * {
+        z-index: 1;
     }
 
     #overlay {
