@@ -806,21 +806,21 @@ function showSlides(n) {
             if ((allrand & !clickonmenu) | starting) {
                 var folders = (Object.keys(objdata).map(key => key));
                 var rndnext = folders.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                var rnd = getRandomInt(rndnext);
                 menuIndex = rnd;
                 showMenu(menuIndex);
                 createOverlay();
                 var folder = $('#navbar .folder:visible').text();
                 var files = objdata[folder];
-                var rndnext = files.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                rndnext = files.length;
+                rnd = getRandomInt(rndnext);
                 slideIndex = rnd;
                 createSlide();
                 saveNavigation();
             }
             else if (rand | (allrand & clickonmenu)) {
                 var rndnext = files.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                var rnd = getRandomInt(rndnext);
                 slideIndex = rnd;
                 saveNavigation();
             }
@@ -979,14 +979,14 @@ function onPlayerStateChange(event) {
             if (allrand) {
                 var folders = (Object.keys(objdata).map(key => key));
                 var rndnext = folders.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                var rnd = getRandomInt(rndnext);
                 menuIndex = rnd;
                 showMenu(menuIndex);
                 createOverlay();
                 var folder = $('#navbar .folder:visible').text();
                 var files = objdata[folder];
-                var rndnext = files.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                rndnext = files.length;
+                rnd = getRandomInt(rndnext);
                 slideIndex = rnd;
                 createSlide();
                 setPlayer(slideIndex - 1);
@@ -997,7 +997,7 @@ function onPlayerStateChange(event) {
                 var folder = $('#navbar .folder:visible').text();
                 var files = objdata[folder];
                 var rndnext = files.length;
-                var rnd = Math.floor(Math.random() * rndnext) + 1;
+                var rnd = getRandomInt(rndnext);
                 slideIndex = rnd;
                 setPlayer(slideIndex - 1);
                 setVideoSource(playerid[slideIndex - 1]);
@@ -1618,6 +1618,10 @@ function setPlayer(ind) {
     playervideo[0].id = playerid[ind];
     var playercenteredtitle = document.getElementsByClassName('centered title ' + folder);
     playercenteredtitle[0].innerHTML = playertitle[ind];
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max) + 1;
 }
 
 window.addEventListener('resize', resizingWindow);
